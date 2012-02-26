@@ -2,11 +2,12 @@ module ActiveRecord
   module Diff
     module ClassMethods
       def diff(*attrs)
-        write_inheritable_attribute(:diff_attrs, attrs)
+        class_attribute :diff_attrs
+        self.diff_attrs = attrs
       end
 
       def diff_attrs
-        attrs = read_inheritable_attribute(:diff_attrs)
+        attrs = self.diff_attrs
 
         if attrs.nil?
           content_columns.map { |column| column.name }
