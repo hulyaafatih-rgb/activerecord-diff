@@ -6,7 +6,7 @@ module ActiveRecord
         self.diff_attrs = attrs
       end
 
-      def diff_attrs
+      def calculate_diff_attrs
         attrs = self.diff_attrs
 
         if attrs.nil?
@@ -41,7 +41,7 @@ module ActiveRecord
           [attr_name, old_record.send(attr_name), hash_value]
         end
       else
-        diff_each(self.class.diff_attrs) do |attr_name|
+        diff_each(self.class.calculate_diff_attrs) do |attr_name|
           [attr_name, old_record.send(attr_name), new_record.send(attr_name)]
         end
       end
