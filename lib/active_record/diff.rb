@@ -2,7 +2,6 @@ module ActiveRecord
   module Diff
     module ClassMethods
       def diff(*attrs)
-        class_attribute :diff_attrs
         self.diff_attrs = attrs
       end
 
@@ -22,6 +21,7 @@ module ActiveRecord
     end
 
     def self.included(base)
+      base.class_attribute :diff_attrs
       base.extend ClassMethods
     end
 
