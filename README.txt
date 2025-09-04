@@ -1,6 +1,6 @@
 Simple ActiveRecord diff functionality.
 
-Example usage:
+Example usage:.
 
   require 'active_record/diff'
 
